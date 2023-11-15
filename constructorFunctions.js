@@ -1,30 +1,31 @@
 // Define Monster and Attack using constructor functions
-function Monster(name, strength, attacks) {
+function Monster(name, strength, attacks, monsterAttack) {
     this.name = name;
     this.strength = strength;
     this.attacks = attacks;
+
+    this.monsterAttack = function() {
+        console.log('The ' + this.name + ' monster attacks >>> ');
+        let totalAttack=0;
+        for(let a=0;a<this.attacks.length;a++)
+        {
+            totalAttack+=this.attacks[a].dealDamage();
+        }
+        return totalAttack;
+    }
 }
 
-function Attack(name, damage) {
+function Attack(name, damage, dealDamage) {
     this.name = name;
     this.damage = damage;
+
+    this.dealDamage = function() {
+        console.log('The '+ this.name + ' attack dealt ' + this.damage +' damage');
+        return this.damage
+    };
 }
 
 // Add the getStrength and getDamaged functions to the Monster prototype
-Monster.prototype.monsterAttack = function() {
-    console.log('The ' + this.name + ' monster attacks >>> ');
-    let totalAttack = 0;
-    for(let a=0; a < this.attacks.length; a++) {
-        totalAttack += this.attacks[a].dealDamage();
-    }
-    return totalAttack;
-};
-
-Attack.prototype.dealDamage = function() {
-    console.log('The ' + this.name + ' attack dealt ' + this.damage + ' damage');
-    return this.damage
-};
-
 Monster.prototype.getStrength = function() {
     console.log('The ' + this.name + ' monster\'s strength is ' + this.strength);
     return this.strength

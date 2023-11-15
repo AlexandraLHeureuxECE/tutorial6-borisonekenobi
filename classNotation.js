@@ -14,16 +14,6 @@ class Monster {
         }
         return totalAttack;
     };
-
-    getStrength() {
-        console.log('The ' + this.name + ' monster\'s strength is ' + this.strength);
-        return this.strength
-    };
-    
-    getDamaged(damage) {
-        this.strength -= damage;
-        return this.strength
-    };
 }
 
 class Attack {
@@ -38,6 +28,17 @@ class Attack {
     };
 }
 
+// Add the getStrength and getDamaged functions to the Monster prototype
+Monster.prototype.getStrength = function() {
+    console.log('The ' + this.name + ' monster\'s strength is ' + this.strength);
+    return this.strength
+};
+
+Monster.prototype.getDamaged = function(damage) {
+    this.strength -= damage;
+    return this.strength
+};
+
 // Create the objects using the class
 let attack1 = new Attack('flying', 30);
 let attack2 = new Attack('surprise', 25);
@@ -49,10 +50,10 @@ let monster2 = new Monster('Werewolf', 1000, [attack3, attack4]);
 
 // Create the calls to generate the output 
 Monster.prototype.getStrength.call(monster1);
-Monster.prototype.getDamaged.call(monster1,monster2.monsterAttack());
+Monster.prototype.getDamaged.call(monster1, monster2.monsterAttack());
 Monster.prototype.getStrength.call(monster1);
 Monster.prototype.getStrength.call(monster2);
-Monster.prototype.getDamaged.call(monster2,monster1.monsterAttack());
+Monster.prototype.getDamaged.call(monster2, monster1.monsterAttack());
 Monster.prototype.getStrength.call(monster2);
 
 // DO NOT TOUCH
