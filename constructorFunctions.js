@@ -1,5 +1,5 @@
 // Define Monster and Attack using constructor functions
-function Monster(name, strength, attacks, monsterAttack) {
+function Monster(name, strength, attacks) {
     this.name = name;
     this.strength = strength;
     this.attacks = attacks;
@@ -15,7 +15,7 @@ function Monster(name, strength, attacks, monsterAttack) {
     }
 }
 
-function Attack(name, damage, dealDamage) {
+function Attack(name, damage) {
     this.name = name;
     this.damage = damage;
 
